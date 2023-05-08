@@ -111,7 +111,7 @@ Open your code editor terminal and run the following command
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/abiola-arobieke/webpack/issues).
+Feel free to check the [issues page](https://github.com/abiola-arobieke/math-magician/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
