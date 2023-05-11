@@ -8,206 +8,53 @@ function Calculator() {
     next: null,
     operation: null,
   });
-  const handleClick = (e) => {
-    newState((oldState) => calculate(oldState, e.target.name));
+  const handleClick = (buttonkey) => {
+    newState((oldState) => calculate(oldState, buttonkey));
   };
 
+  const buttonKeys = [
+    'AC',
+    '+/-',
+    '%',
+    '÷',
+    '7',
+    '8',
+    '9',
+    'x',
+    '4',
+    '5',
+    '6',
+    '-',
+    '1',
+    '2',
+    '3',
+    '+',
+    '0',
+    '.',
+    '=',
+  ];
   return (
-    <section>
-      <div className="grid-container">
-        <CalcScreen answer={oldState} />
-        <div className="grid-item">
+    <div className="grid-container">
+      <CalcScreen answer={oldState} />
+
+      {buttonKeys.map((buttonkey) => (
+        <div
+          key={buttonkey}
+          className={`${buttonkey.match(/[0]+/) ? 'zero-btn' : ''} grid-item`}
+        >
           <button
-            onClick={handleClick}
-            name="AC"
-            className="calc-btn bg-light-gray"
             type="button"
+            key={buttonkey}
+            className={`${
+              buttonkey.match(/[0-9.]+/) ? 'bg-light-gray' : 'bg-brown'
+            } calc-btn`}
+            onClick={() => handleClick(buttonkey)}
           >
-            AC
+            {buttonkey}
           </button>
         </div>
-        <div className="grid-item">
-          <button
-            className="calc-btn bg-light-gray"
-            onClick={handleClick}
-            name="-"
-            type="button"
-          >
-            +/-
-          </button>
-        </div>
-        <div className="grid-item">
-          <button
-            className="calc-btn bg-light-gray"
-            onClick={handleClick}
-            name="%"
-            type="button"
-          >
-            %
-          </button>
-        </div>
-        <div className="grid-item">
-          <button
-            onClick={handleClick}
-            name="+"
-            className="calc-btn bg-brown"
-            type="button"
-          >
-            ÷
-          </button>
-        </div>
-        <div className="grid-item bg-light-gray">
-          <button
-            className="calc-btn bg-light-gray"
-            onClick={handleClick}
-            name="1"
-            type="button"
-          >
-            1
-          </button>
-        </div>
-        <div className="grid-item">
-          <button
-            className="calc-btn bg-light-gray"
-            onClick={handleClick}
-            name="2"
-            type="button"
-          >
-            2
-          </button>
-        </div>
-        <div className="grid-item">
-          <button
-            className="calc-btn bg-light-gray"
-            onClick={handleClick}
-            name="3"
-            type="button"
-          >
-            3
-          </button>
-        </div>
-        <div className="grid-item">
-          <button
-            className="calc-btn bg-brown"
-            onClick={handleClick}
-            name="x"
-            type="button"
-          >
-            x
-          </button>
-        </div>
-        <div className="grid-item">
-          <button
-            className="calc-btn bg-light-gray"
-            onClick={handleClick}
-            name="4"
-            type="button"
-          >
-            4
-          </button>
-        </div>
-        <div className="grid-item">
-          <button
-            className="calc-btn bg-light-gray"
-            onClick={handleClick}
-            name="5"
-            type="button"
-          >
-            5
-          </button>
-        </div>
-        <div className="grid-item">
-          <button
-            className="calc-btn bg-light-gray"
-            onClick={handleClick}
-            name="6"
-            type="button"
-          >
-            6
-          </button>
-        </div>
-        <div className="grid-item">
-          <button
-            className="calc-btn bg-brown"
-            onClick={handleClick}
-            name="-"
-            type="button"
-          >
-            -
-          </button>
-        </div>
-        <div className="grid-item">
-          <button
-            className="calc-btn bg-light-gray"
-            onClick={handleClick}
-            name="7"
-            type="button"
-          >
-            7
-          </button>
-        </div>
-        <div className="grid-item">
-          <button
-            className="calc-btn bg-light-gray"
-            onClick={handleClick}
-            name="8"
-            type="button"
-          >
-            8
-          </button>
-        </div>
-        <div className="grid-item">
-          <button
-            className="calc-btn bg-light-gray"
-            onClick={handleClick}
-            name="9"
-            type="button"
-          >
-            9
-          </button>
-        </div>
-        <div className="grid-item">
-          <button
-            className="calc-btn bg-brown"
-            onClick={handleClick}
-            name="+"
-            type="button"
-          >
-            +
-          </button>
-        </div>
-        <div className="grid-item zero-btn">
-          <button
-            className="calc-btn bg-light-gray"
-            onClick={handleClick}
-            name="0"
-            type="button"
-          >
-            0
-          </button>
-        </div>
-        <div className="grid-item">
-          <button
-            className="calc-btn bg-light-gray text-bold"
-            onClick={handleClick}
-            name="."
-            type="button"
-          >
-            .
-          </button>
-        </div>
-        <div className="grid-item">
-          <button
-            className="calc-btn bg-brown"
-            onClick={handleClick}
-            name="="
-            type="button"
-          >
-            =
-          </button>
-        </div>
-      </div>
-    </section>
+      ))}
+    </div>
   );
 }
 
