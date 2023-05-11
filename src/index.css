@@ -16,12 +16,48 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family:
-    source-code-pro,
-    Menlo,
-    Monaco,
-    Consolas,
-    'Courier New',
-    monospace;
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  width: 500px;
+  margin: 10% auto;
+}
+
+.grid-item {
+  border: 1px solid #d0d7de;
+  text-align: center;
+}
+
+.display {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  padding: 20px;
+  font-size: 18px;
+  text-align: right;
+  color: #fff;
+  background-color: #858694;
+}
+
+.zero-btn {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.calc-btn {
+  width: 100%;
+  border: none;
+  padding: 20px;
+  font-size: 18px;
+}
+
+.bg-light-gray {
+  background-color: #e0e0e0;
+}
+
+.bg-brown {
+  background-color: #f5913e;
+}
+
+.text-bold {
+  font-weight: bold;
 }
