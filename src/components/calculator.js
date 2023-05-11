@@ -1,49 +1,25 @@
 import React, { useState } from 'react';
 import CalcScreen from './calcScreen';
 import calculate from '../logic/calculate';
-import operate from '../logic/operate';
 
 function Calculator() {
-  const [oldState, newState] = useState({ result: '0', num: '0', sign: '' });
+  const [oldState, newState] = useState({
+    total: 0,
+    next: null,
+    operation: null,
+  });
   const handleClick = (e) => {
-    const val = calculate(oldState, e.target.name);
-    newState(val);
-  };
-
-  const handleClear = () => {
-    newState({
-      result: '0',
-      num: '0',
-      sign: null,
-    });
-  };
-
-  const handleSign = (e) => {
-    newState({
-      result: oldState.result,
-      num: oldState.num,
-      sign: e.target.name,
-    });
-  };
-
-  const handleEvaluation = () => {
-    const ans = operate(oldState.result, oldState.num, oldState.sign);
-    const finalAns = ans.c.join('');
-    newState({
-      result: '0',
-      num: finalAns,
-      sign: '',
-    });
+    newState((oldState) => calculate(oldState, e.target.name));
   };
 
   return (
     <section>
       <div className="grid-container">
-        <CalcScreen answer={oldState.num} />
+        <CalcScreen answer={oldState} />
         <div className="grid-item">
           <button
-            onClick={handleClear}
-            name="ac"
+            onClick={handleClick}
+            name="AC"
             className="calc-btn bg-light-gray"
             type="button"
           >
@@ -53,7 +29,7 @@ function Calculator() {
         <div className="grid-item">
           <button
             className="calc-btn bg-light-gray"
-            onClick={handleSign}
+            onClick={handleClick}
             name="-"
             type="button"
           >
@@ -63,7 +39,7 @@ function Calculator() {
         <div className="grid-item">
           <button
             className="calc-btn bg-light-gray"
-            onClick={handleSign}
+            onClick={handleClick}
             name="%"
             type="button"
           >
@@ -72,7 +48,7 @@ function Calculator() {
         </div>
         <div className="grid-item">
           <button
-            onClick={handleSign}
+            onClick={handleClick}
             name="+"
             className="calc-btn bg-brown"
             type="button"
@@ -113,7 +89,7 @@ function Calculator() {
         <div className="grid-item">
           <button
             className="calc-btn bg-brown"
-            onClick={handleSign}
+            onClick={handleClick}
             name="x"
             type="button"
           >
@@ -153,7 +129,7 @@ function Calculator() {
         <div className="grid-item">
           <button
             className="calc-btn bg-brown"
-            onClick={handleSign}
+            onClick={handleClick}
             name="-"
             type="button"
           >
@@ -193,7 +169,7 @@ function Calculator() {
         <div className="grid-item">
           <button
             className="calc-btn bg-brown"
-            onClick={handleSign}
+            onClick={handleClick}
             name="+"
             type="button"
           >
@@ -223,7 +199,7 @@ function Calculator() {
         <div className="grid-item">
           <button
             className="calc-btn bg-brown"
-            onClick={handleEvaluation}
+            onClick={handleClick}
             name="="
             type="button"
           >
