@@ -1,107 +1,61 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CalcScreen from './calcScreen';
+import calculate from '../logic/calculate';
 
-const Calculator = () => (
-  <section>
+function Calculator() {
+  const [oldState, newState] = useState({
+    total: 0,
+    next: null,
+    operation: null,
+  });
+  const handleClick = (buttonkey) => {
+    newState((oldState) => calculate(oldState, buttonkey));
+  };
+
+  const buttonKeys = [
+    'AC',
+    '+/-',
+    '%',
+    '÷',
+    '7',
+    '8',
+    '9',
+    'x',
+    '4',
+    '5',
+    '6',
+    '-',
+    '1',
+    '2',
+    '3',
+    '+',
+    '0',
+    '.',
+    '=',
+  ];
+  return (
     <div className="grid-container">
-      <CalcScreen />
-      <div className="grid-item">
-        <button className="calc-btn bg-light-gray" type="button">
-          AC
-        </button>
-      </div>
-      <div className="grid-item">
-        <button className="calc-btn bg-light-gray" type="button">
-          +/-
-        </button>
-      </div>
-      <div className="grid-item">
-        <button className="calc-btn bg-light-gray" type="button">
-          %
-        </button>
-      </div>
-      <div className="grid-item">
-        <button className="calc-btn bg-brown" type="button">
-          ÷
-        </button>
-      </div>
-      <div className="grid-item bg-light-gray">
-        <button className="calc-btn bg-light-gray" type="button">
-          1
-        </button>
-      </div>
-      <div className="grid-item">
-        <button className="calc-btn bg-light-gray" type="button">
-          2
-        </button>
-      </div>
-      <div className="grid-item">
-        <button className="calc-btn bg-light-gray" type="button">
-          3
-        </button>
-      </div>
-      <div className="grid-item">
-        <button className="calc-btn bg-brown" type="button">
-          x
-        </button>
-      </div>
-      <div className="grid-item">
-        <button className="calc-btn bg-light-gray" type="button">
-          4
-        </button>
-      </div>
-      <div className="grid-item">
-        <button className="calc-btn bg-light-gray" type="button">
-          5
-        </button>
-      </div>
-      <div className="grid-item">
-        <button className="calc-btn bg-light-gray" type="button">
-          6
-        </button>
-      </div>
-      <div className="grid-item">
-        <button className="calc-btn bg-brown" type="button">
-          -
-        </button>
-      </div>
-      <div className="grid-item">
-        <button className="calc-btn bg-light-gray" type="button">
-          7
-        </button>
-      </div>
-      <div className="grid-item">
-        <button className="calc-btn bg-light-gray" type="button">
-          8
-        </button>
-      </div>
-      <div className="grid-item">
-        <button className="calc-btn bg-light-gray" type="button">
-          9
-        </button>
-      </div>
-      <div className="grid-item">
-        <button className="calc-btn bg-brown" type="button">
-          +
-        </button>
-      </div>
-      <div className="grid-item zero-btn">
-        <button className="calc-btn bg-light-gray" type="button">
-          0
-        </button>
-      </div>
-      <div className="grid-item">
-        <button className="calc-btn bg-light-gray text-bold" type="button">
-          .
-        </button>
-      </div>
-      <div className="grid-item">
-        <button className="calc-btn bg-brown" type="button">
-          =
-        </button>
-      </div>
+      <CalcScreen answer={oldState} />
+
+      {buttonKeys.map((buttonkey) => (
+        <div
+          key={buttonkey}
+          className={`${buttonkey.match(/[0]+/) ? 'zero-btn' : ''} grid-item`}
+        >
+          <button
+            type="button"
+            key={buttonkey}
+            className={`${
+              buttonkey.match(/[0-9.]+/) ? 'bg-light-gray' : 'bg-brown'
+            } calc-btn`}
+            onClick={() => handleClick(buttonkey)}
+          >
+            {buttonkey}
+          </button>
+        </div>
+      ))}
     </div>
-  </section>
-);
+  );
+}
 
 export default Calculator;

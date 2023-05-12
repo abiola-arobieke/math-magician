@@ -1,5 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const CalcScreen = () => <div className="grid-item display">0</div>;
+const CalcScreen = ({ answer }) => (
+  <div className="grid-item display">
+    {answer.total}
+    {answer.operation}
+    {answer.next}
+  </div>
+);
+
+CalcScreen.propTypes = {
+  answer: PropTypes.instanceOf(Object).isRequired,
+};
 
 export default CalcScreen;
