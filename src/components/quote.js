@@ -37,7 +37,12 @@ function Homepage() {
         </div>
       </div>
       <div className="banner mx-10c">
+        <h3>Quote of the day:</h3>
         <p>{quote.quote}</p>
+        <div>
+          --
+          { quote.author }
+        </div>
       </div>
     </div>
   );
