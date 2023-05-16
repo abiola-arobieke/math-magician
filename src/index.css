@@ -16,6 +16,40 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1 {
+  font-size: 42px;
+  text-transform: capitalize;
+}
+
+h2 {
+  font-size: 32px;
+  padding-bottom: 50px;
+}
+
+h3 {
+  font-size: 28px;
+}
+
+p {
+  font-size: 20px;
+}
+
+.navbar {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.banner {
+  padding-top: 50px;
+  padding-bottom: 30px;
+}
+
+.mx-10c {
+  margin: 0 10%;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto auto;
@@ -50,6 +84,12 @@ body {
   font-size: 18px;
 }
 
+.message {
+  font-size: 32px;
+  margin-left: 10%;
+  margin-top: 10%;
+}
+
 .bg-light-gray {
   background-color: #e0e0e0;
 }
@@ -60,4 +100,15 @@ body {
 
 .text-bold {
   font-weight: bold;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.nav-btn {
+  margin: 0 10px;
+  font-size: 18px;
+  background-color: #fff;
+  border: none;
 }
