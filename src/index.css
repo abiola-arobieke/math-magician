@@ -54,7 +54,7 @@ p {
   display: grid;
   grid-template-columns: auto auto auto auto;
   width: 500px;
-  margin: 10% auto;
+  margin: 3% auto;
 }
 
 .grid-item {
@@ -87,7 +87,7 @@ p {
 .message {
   font-size: 32px;
   margin-left: 10%;
-  margin-top: 10%;
+  margin-top: 4%;
 }
 
 .bg-light-gray {
