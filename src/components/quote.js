@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function Homepage() {
+function Quote() {
   const [load, setLoad] = useState(true);
   const [quote, setQuote] = useState('');
   const [error, setError] = useState('');
@@ -30,21 +30,14 @@ function Homepage() {
   }
 
   return (
-    <div>
-      <div className="d-flex navbar mx-10c">
-        <div>
-          <h1>Math Magician</h1>
-        </div>
-      </div>
-      <div className="banner mx-10c">
-        <h3>Quote of the day:</h3>
-        <p>{quote.quote}</p>
-        <div>
-          --
-          { quote.author }
-        </div>
+    <div className="banner mx-10c">
+      <h3>Quote of the day:</h3>
+      <h4>{quote.quote}</h4>
+      <div>
+        --
+        {quote.author}
       </div>
     </div>
   );
 }
-export default Homepage;
+export default Quote;
