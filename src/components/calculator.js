@@ -34,26 +34,29 @@ function Calculator() {
     '=',
   ];
   return (
-    <div className="grid-container">
-      <CalcScreen answer={oldState} />
+    <div className="d-flex mx-10c banner">
+      <h2>Let&apos;s do some math</h2>
+      <div className="grid-container">
+        <CalcScreen answer={oldState} />
 
-      {buttonKeys.map((buttonkey) => (
-        <div
-          key={buttonkey}
-          className={`${buttonkey.match(/[0]+/) ? 'zero-btn' : ''} grid-item`}
-        >
-          <button
-            type="button"
+        {buttonKeys.map((buttonkey) => (
+          <div
             key={buttonkey}
-            className={`${
-              buttonkey.match(/[0-9.]+/) ? 'bg-light-gray' : 'bg-brown'
-            } calc-btn`}
-            onClick={() => handleClick(buttonkey)}
+            className={`${buttonkey.match(/[0]+/) ? 'zero-btn' : ''} grid-item`}
           >
-            {buttonkey}
-          </button>
-        </div>
-      ))}
+            <button
+              type="button"
+              key={buttonkey}
+              className={`${
+                buttonkey.match(/[0-9.]+/) ? 'bg-light-gray' : 'bg-brown'
+              } calc-btn`}
+              onClick={() => handleClick(buttonkey)}
+            >
+              {buttonkey}
+            </button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
