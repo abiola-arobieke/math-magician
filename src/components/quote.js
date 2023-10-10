@@ -32,11 +32,11 @@ function Quote() {
   return (
     <div className="banner mx-10c">
       <h3>Quote of the day:</h3>
-      <h4>{quote.quote}</h4>
-      <div>
+      <p>{quote.quote}</p>
+      <h4>
         --
         {quote.author}
-      </div>
+      </h4>
     </div>
   );
 }
